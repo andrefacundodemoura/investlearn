@@ -1,3 +1,4 @@
+
 function selic(){
     let sel=window.document.getElementById("res")
     sel.innerHTML=`O Tesouro Direto Selic é um título de dívida emitido pelo governo. Isso significa que ao investir nele, você estará emprestando dinheiro ao poder público.Essa é a principal função do Tesouro Direto para o emissor. Para o investidor que busca aplicar com a flexibilidade de poder resgatar o dinheiro quando quiser, sem perda de lucro, o Tesouro Direto tende a ser uma boa opção.`
@@ -67,6 +68,6 @@ function calcular(){
         conts ++
         s+=mensal
     }
-        sel.innerHTML=`Tesouro SELIC: ${conts} meses e atingira R$${s}`
+    sel.innerHTML=`Tesouro SELIC: ${conts} meses e atingira R$${s}`
 
 }
