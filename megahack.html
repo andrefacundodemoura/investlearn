@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>investlearn</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Aprenda oque é.</h1>
+        <p>
+            <img src="tesourodir.jpeg" alt="tesourodireto">
+        </p>
+        <p>O rendimento do Tesouro Direto ao mês supera o da poupança na maioria das vezes, por isso, é a hora de inserir títulos públicos em sua carteira de investimentos.</p>
+        
+        
+    </header>
+    <section>
+        <div>
+
+            Muitas pessoas, ao observarem o rendimento do Tesouro Direto ao mês, optam por deixar de vez a poupança e migrar para essa modalidade de investimento.
+
+            Considerado como uma das aplicações mais seguras do mercado, o Tesouro Direto possui três modalidades distintas, que podem se adequar aos planos de, praticamente, qualquer investidor.
+
+            Seja para guardar dinheiro para a aposentadoria ou simplesmente criar uma reserva de emergência. 
+
+        </div>
+        
+
+    </section>
+    <footer>
+        <h1>Saiba mais sobre os tipos de aplicaçoes. </h1>
+        <p>
+            <img src="selic.png" alt="tesouroselic" onclick="selic()">
+            <img src="tesouropre.jpg" alt="tesouro prefixado" onclick="tesouropre()">
+            <img src="ipca.jpg" alt="tesouroipca" onclick="ipca()">
+     
+        </p>
+           
+
+    </footer>
+    <section>
+        <div id="res">
+            <p>Click na imagem acima para obter informações:</p>
+            
+        </div>
+    </section>
+    <footer>
+        <h1>Faça sua simulação</h1>
+        <div>
+            Qual o seu objetivo? R$
+            <input type="number" name="dinheiro" id="dinheiro">
+        </div>
+        <div>
+            Quanto você deseja colocar por mês?R$
+            <input type="number" name="mes" id="mes">
+            <p><img src="click.jpg" alt="caucula" onclick="calcular()"></p>
+        </div>
+        
+    </footer>
+    <section>
+        <div id="res">
+            <p>Veja como seriam seus investimentos:</p>
+            <p>investimentos resgataveis em qualquer momento!</p>
+            <p id="casa">Guardando em casa:</p>
+            <p id="poup">Poupança:</p>
+            <p id="sel">Tesouro SELIC:</p>
+            <p>Investimentos com prazo!</p>
+            <p>Tesouro PRÉFIXADO:</p>
+            <p>Tesouro IPCA+:</p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
