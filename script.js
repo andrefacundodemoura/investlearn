@@ -50,23 +50,24 @@ function calcular(){
     casa.innerHTML=`Guardando em casa: ${guardacasa} meses rendendo R$${objetivo}`
 
     //inicio calculo poupança
-    let pouptaxa=mensal/100*0.24
-    var contp =1
     
-    for (var p=mensal;p<objetivo;p+=pouptaxa){
+    let contp=0
+    
+    for (var p=mensal;p<objetivo;p+=mensal){
+        let pouptaxa=p/100*0.24
         contp ++
-        p+=mensal
+        p+=pouptaxa
     }
     poup.innerHTML=`Poupança: ${contp} meses e atingira R$${p.toFixed(2)}`
     //fim poupança
 
     //inicio calculo selic
-    let selictaxa=mensal/100*0.45
-    conts=1
-
-    for (var s=mensal;s<objetivo;s+=selictaxa){
-        conts ++
-        s+=mensal
+   
+    let conts=0
+    for (var s=mensal;s<objetivo;s+=mensal){
+        let selictaxa=s/100*0.45
+        conts++
+        s+=selictaxa
     }
     sel.innerHTML=`Tesouro SELIC: ${conts} meses e atingira R$${s.toFixed(2)}`
 
