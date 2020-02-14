@@ -45,9 +45,11 @@ function calcular(){
 
     let guardacasa=objetivo/mensal
     
+    let contanocasa=guardacasa/12
+    let contrestcasa=guardacasa%12
 
 
-    casa.innerHTML=`Guardando em casa: ${guardacasa} meses rendendo R$${objetivo}`
+    casa.innerHTML=`Guardando em casa: ${contanocasa.toFixed()} anos e ${contrestcasa} meses rendendo R$${objetivo}`
 
     //inicio calculo poupança
     
@@ -58,7 +60,10 @@ function calcular(){
         contp ++
         p+=pouptaxa
     }
-    poup.innerHTML=`Poupança: ${contp} meses e atingira R$${p.toFixed(2)}`
+    let contanop=contp/12
+    let contrestp=contp%12
+
+    poup.innerHTML=`Poupança: ${contanop.toFixed()} anos e ${contrestp} meses e atingira R$${p.toFixed(2)}`
     //fim poupança
 
     //inicio calculo selic
@@ -69,6 +74,9 @@ function calcular(){
         conts++
         s+=selictaxa
     }
-    sel.innerHTML=`Tesouro SELIC: ${conts} meses e atingira R$${s.toFixed(2)}`
+    let contanos=conts/12
+    let contrests=conts%12
+
+    sel.innerHTML=`Tesouro SELIC: ${contanos.toFixed()} anos e ${contrests} meses e atingira R$${s.toFixed(2)}`
 
 }
