@@ -51,7 +51,7 @@ function calcular(){
 
     //inicio calculo poupança
     
-    let contp=0
+    let contp=1
     
     for (var p=mensal;p<objetivo;p+=mensal){
         let pouptaxa=p/100*0.24
@@ -63,7 +63,7 @@ function calcular(){
 
     //inicio calculo selic
    
-    let conts=0
+    let conts=1
     for (var s=mensal;s<objetivo;s+=mensal){
         let selictaxa=s/100*0.45
         conts++
