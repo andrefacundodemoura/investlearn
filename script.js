@@ -57,17 +57,17 @@ function calcular(){
         contp ++
         p+=mensal
     }
-    poup.innerHTML=`Poupança: ${contp} meses e atingira R$${p}`
+    poup.innerHTML=`Poupança: ${contp} meses e atingira R$${p.toFixed(2)}`
     //fim poupança
 
     //inicio calculo selic
-    let selictaxa=mensal/100*0.54
+    let selictaxa=mensal/100*0.45
     conts=1
 
     for (var s=mensal;s<objetivo;s+=selictaxa){
         conts ++
         s+=mensal
     }
-    sel.innerHTML=`Tesouro SELIC: ${conts} meses e atingira R$${s}`
+    sel.innerHTML=`Tesouro SELIC: ${conts} meses e atingira R$${s.toFixed(2)}`
 
 }
