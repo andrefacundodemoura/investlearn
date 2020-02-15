@@ -5,83 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>investlearn</title>
-    <link rel="stylesheet" href="estilo.css">
+    <!-- <link rel="stylesheet" href="estilo.css"> -->
     <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Faça sua simulação</h1>
-        <p>
-            Qual o seu objetivo? 
-            <div >
-                <p id="valorInicialObjetivo" >1000</p>
-                <input type="range" name="slideObjetivo" id="slideObjetivo" min="1000" max="500000" value="10000" step="1000" >
-            </div>           
-        </p>
-        <p>
-            Quanto você deseja colocar por mês?
-            <div>
-                <p id="mes">100</p>
-                <input type="range" name="slidemes" id="slidemes" min="100" max="5000" value="10" step="100" >
-            </div>
-            
-                        
-        </p>
 
-        <p><img src="click.jpg" alt="caucula" onclick="calcular()"></p>
-        <section>
+
+    <div class="container-fluid">
+        <header class="text-center" >
+            <h1>Faça sua simulação</h1>
+        </header>
+        <section class="jumbotron text-center" >
+            <div class="container" >
+                <div>
+                    <p>
+                        Qual o seu objetivo? R$
+                    </p>
+                    <!-- <input type="number" name="dinheiro" id="dinheiro">  -->
+                    <div >
+                        <p id="valorInicialObjetivo" >10000</p>
+                        <input type="range" name="slideObjetivo" id="slideObjetivo" min="1000" max="500000" value="10000" step="100" >
+                    </div>           
+                </div>
+                <div>
+                    <p>
+                        Quanto você deseja colocar por mês?R$
+                    </p>
+                    <!-- <input type="number" name="mes" id="mes" value="10" >  -->
+                    <p id="valorPorMes" >100</p>
+                    <input type="range" name="mes" id="mes" min="10" max="30000" value="100" step="10" >
+
+
+                </div>
+                <p></p>
+                <p><img src="click.jpg" alt="caucula" onclick="calcular()" width="150px"></p>
+            </div>
+        </section>
+        <section class="jumbotron text-center">
             <div id="res">
                 <p>Veja como seriam seus investimentos:</p>
                 <p>investimentos resgataveis em qualquer momento!</p>
                 <p id="casa">Guardando em casa:</p>
                 <p id="poup">Poupança:</p>
                 <p id="sel">Tesouro SELIC:</p>
-                <p id="text"></p>
             </div>
-
         </section>
-        
-        <h1>Aprenda o que é.</h1>
+        <section class="jumbotron text-center" >
+            <p id="text"></p>
+        </section>
+        <h2>Aprenda o que é.</h2>
         <p>
             <img src="tesourodir.jpeg" alt="tesourodireto">
         </p>
-        
-        
-        
-    </header>
-
-    <section>
-        <div>
-
-            Muitas pessoas, ao observarem o rendimento do Tesouro Direto ao mês, optam por deixar de vez a poupança e migrar para essa modalidade de investimento.
-
-            Considerado como uma das aplicações mais seguras do mercado, o Tesouro Direto possui três modalidades distintas, que podem se adequar aos planos de, praticamente, qualquer investidor.
-
-            Seja para guardar dinheiro para a aposentadoria ou simplesmente criar uma reserva de emergência. 
-
-        </div>
-        
-
-    </section>
-    <footer>
-        <h1>Saiba mais sobre os tipos de aplicações. </h1>
+ 
+    
+        <section>
+            <div>
+    
+                Muitas pessoas, ao observarem o rendimento do Tesouro Direto ao mês, optam por deixar de vez a poupança e migrar para essa modalidade de investimento.
+    
+                Considerado como uma das aplicações mais seguras do mercado, o Tesouro Direto possui três modalidades distintas, que podem se adequar aos planos de, praticamente, qualquer investidor.
+    
+                Seja para guardar dinheiro para a aposentadoria ou simplesmente criar uma reserva de emergência. 
+    
+            </div>
+            
+    
+        </section>
+        <h2>Saiba mais sobre os tipos de aplicações. </h2>
         <p>
             <img src="selic.png" alt="tesouroselic" onclick="selic()">
             <img src="tesouropre.jpg" alt="tesouro prefixado" onclick="tesouropre()">
             <img src="ipca.jpg" alt="tesouroipca" onclick="ipca()">
-     
+        
         </p>
-           
 
-    </footer>
-    <section>
-        <div id="restipo">
-            <p>Click na imagem acima para obter informações:</p>
-            
-        </div>
-    </section>
+        <section>
+            <div id="restipo">
+                <p>Click na imagem acima para obter informações:</p>
+                
+            </div>
+        </section>
+    </div>
     
     <script src="./src/getSelic.js"></script>
 
