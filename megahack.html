@@ -14,16 +14,20 @@
     <header>
         <h1>Faça sua simulação</h1>
         <p>
-            Qual o seu objetivo? R$
-            <input type="number" name="dinheiro" id="dinheiro"> 
+            Qual o seu objetivo? 
             <div >
                 <p id="valorInicialObjetivo" >10000</p>
                 <input type="range" name="slideObjetivo" id="slideObjetivo" min="1000" max="500000" value="10000" step="10" >
             </div>           
         </p>
         <p>
-            Quanto você deseja colocar por mês?R$
-            <input type="number" name="mes" id="mes" value="10" >            
+            Quanto você deseja colocar por mês?
+            <div>
+                <p id="mes">100</p>
+                <input type="range" name="slidemes" id="slidemes" min="100" max="500000" value="10" step="10" >
+            </div>
+            
+                        
         </p>
 
         <p><img src="click.jpg" alt="caucula" onclick="calcular()"></p>
