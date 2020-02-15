@@ -36,8 +36,31 @@ async function dataSelic() {
     return selic
 } 
 
+const calculoInvestimento = ( valorMensal, valorObjetivo, taxa ) => {
+    let contp=1
+    let anos;
+    let meses;
+    
+    for (var p=valorMensal;p<valorObjetivo;p+=valorMensal){
+        let pouptaxa=p/100*taxa
+        contp ++
+        p+=pouptaxa
+    }
+
+    anos = contp/12
+    meses = (contp%12).toFixed()
+
+    if( anos < 1 ){
+        anos = 0
+    }else{
+        anos = anos.toFixed()
+    }
+
+    return [ anos , meses, p.toFixed(2) ]
+}
 
 async function calcular(){
+
     let din =getElementId("dinheiro")
 
     let mes =getElementId("mes")
@@ -56,43 +79,30 @@ async function calcular(){
 
     let guardacasa=objetivo/mensal
     
-    let contanocasa=guardacasa/12
+    let contanocasa=(guardacasa/12)
     let contrestcasa=guardacasa%12
+
+    if( contanocasa < 1 ){
+        contanocasa = 0
+    }else{
+        contanocasa = contanocasa.toFixed()
+    }
+
+    console.log( guardacasa , contanocasa)
 
     const taxas = {
         selic: await dataSelic(),
         poupanca: await dataPoupanca()
     }    
 
-    casa.innerHTML=`Guardando em casa: ${contanocasa.toFixed()} anos e ${contrestcasa} meses rendendo R$${objetivo}`
+    casa.innerHTML=`Guardando em casa: ${contanocasa} anos e ${contrestcasa} meses rendendo R$${objetivo}`
 
-    //inicio calculo poupança
-    
-    let contp=1
-    
-    for (var p=mensal;p<objetivo;p+=mensal){
-        let pouptaxa=p/100*taxas.poupanca.jurosMensal
-        contp ++
-        p+=pouptaxa
-    }
-    let contanop=contp/12
-    let contrestp=contp%12
+    const [ resPoupancaAno, resPoupancaMes, valorTotalPoupanca ] = calculoInvestimento( mensal, objetivo, taxas.poupanca.jurosMensal )
+    const [ resSelicAno, resSelicMes, valorTotalSelic ] = calculoInvestimento( mensal, objetivo, taxas.selic.jurosMensal )
 
-    poup.innerHTML=`Poupança: ${contanop.toFixed()} anos e ${contrestp} meses e atingira R$${p.toFixed(2)}`
-    //fim poupança
+    poup.innerHTML=`Poupança: ${resPoupancaAno} anos e ${resPoupancaMes} meses e atingira R$${valorTotalPoupanca}`
 
-    //inicio calculo selic
-   
-    let conts=1
-    for (var s=mensal;s<objetivo;s+=mensal){
-        let selictaxa=s/100*taxas.selic.jurosMensal
-        conts++
-        s+=selictaxa
-    }
-    let contanos=conts/12
-    let contrests=conts%12
-
-    sel.innerHTML=`Tesouro SELIC: ${contanos.toFixed()} anos e ${contrests} meses e atingira R$${s.toFixed(2)}`
+    sel.innerHTML=`Tesouro SELIC: ${resSelicAno} anos e ${resSelicMes} meses e atingira R$${valorTotalSelic}`
     text.innerHTML=` O rendimento do Tesouro Direto como a SELIC ao mês supera o da poupança na maioria das vezes, por isso, é a hora de inserir títulos públicos em sua carteira de investimentos.`
 
 }
