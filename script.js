@@ -132,7 +132,7 @@ async function calcular(){
     const taxas = {
         selic: await dataSelic(),
         poupanca: await dataPoupanca()
-    }    
+    }   
 
     casa.innerHTML= textoResultadoDaSimulacao( 'Guardando em casa', contanocasa, contrestcasa, objetivo )
 
