@@ -14,6 +14,17 @@ slideObjetivo.addEventListener( 'input', ( ) => {
     valueObjetivo = Number(slideObjetivo.value)
 } )
 
+// Implementação do slide para escolher o valor do objetivo
+const slideMes = getElementId( 'mes' )
+const valorPorMes = getElementId( 'valorPorMes' )
+
+let valueMes = 100;
+
+slideMes.addEventListener( 'input', ( ) => {
+    valorPorMes.innerHTML = slideMes.value
+    valueMes = Number(slideMes.value)
+} )
+
 // Code transforma taxa Selic em Poupança
 async function calcTxPoupanca() {
     const taxaSelic = await SELIC
