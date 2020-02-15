@@ -10,7 +10,7 @@ const textoValorObjetivo = getElementId( 'valorInicialObjetivo' )
 let valueObjetivo = 1000;
 
 slideObjetivo.addEventListener( 'input', ( ) => {
-    textoValorObjetivo.innerHTML = slideObjetivo.value
+    textoValorObjetivo.innerHTML = 'R$ ' + slideObjetivo.value
     valueObjetivo = Number(slideObjetivo.value)
 } )
 
@@ -21,14 +21,14 @@ const valorPorMes = getElementId( 'valorPorMes' )
 let valueMes = 100;
 
 slideMes.addEventListener( 'input', ( ) => {
-    valorPorMes.innerHTML = slideMes.value
+    valorPorMes.innerHTML = 'R$ ' + slideMes.value
     valueMes = Number(slideMes.value)
 } )
 
 // Code transforma taxa Selic em Poupança
 async function calcTxPoupanca() {
     const taxaSelic = await SELIC
-    const jurosAnul = (taxaSelic.valor/100*70).toFixed(3)
+    const jurosAnul = (taxaSelic.valor/100*70).toFixed(2)
     const jurosMensal = ((Math.pow( 1+(jurosAnul/100), 1/12 ) -1)*100).toFixed(3)
     return {
         titulo: 'Poupança',
@@ -95,7 +95,7 @@ const calculoInvestimento = ( valorMensal, valorObjetivo, taxa ) => {
 
 // Função para tornar mais dinamica a resposta, tirando textos que não fariao sentido
 // ex: 0 Anos
-const textoResultadoDaSimulacao = ( opcao, anos, meses, valorTotal ) =>{
+const textoResultadoDaSimulacao = ( opcao, anos, meses, valorTotal, taxa ) =>{
     let texto = `${ opcao }: `
     const textoAnos = `${ anos } anos`
     const textoMeses= `${ meses } meses`
@@ -108,7 +108,7 @@ const textoResultadoDaSimulacao = ( opcao, anos, meses, valorTotal ) =>{
         texto += textoMeses
     }
 
-    texto += ` rendendo R$ ${ valorTotal }.`
+    texto += ` rendendo ${ taxa }% ao ano, total de R$ ${ valorTotal }.`
 
     return texto
 }
@@ -145,7 +145,7 @@ async function calcular(){
         poupanca: await dataPoupanca()
     }   
 
-    casa.innerHTML= textoResultadoDaSimulacao( 'Guardando em casa', contanocasa, contrestcasa, objetivo )
+    casa.innerHTML= textoResultadoDaSimulacao( 'Guardando em casa', contanocasa, contrestcasa, objetivo, 0 )
 
     // Aqui estou fazendo uma desestruturação - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Atribuicao_via_desestruturacao
     // Assim vc pode criar varias variaveis baseadas em um array
@@ -154,8 +154,8 @@ async function calcular(){
     
     const [ resSelicAno, resSelicMes, valorTotalSelic ] = calculoInvestimento( mensal, objetivo, taxas.selic.jurosMensal )
 
-    poup.innerHTML = textoResultadoDaSimulacao( 'Poupança', resPoupancaAno, resPoupancaMes, valorTotalPoupanca )
-    sel.innerHTML = textoResultadoDaSimulacao( 'Tesouro SELIC', resSelicAno, resSelicMes, valorTotalSelic )
+    poup.innerHTML = textoResultadoDaSimulacao( 'Poupança', resPoupancaAno, resPoupancaMes, valorTotalPoupanca, taxas.poupanca.jurosAnul )
+    sel.innerHTML = textoResultadoDaSimulacao( 'Tesouro SELIC', resSelicAno, resSelicMes, valorTotalSelic, taxas.selic.jurosAnul )
 
     text.innerHTML=` O rendimento do Tesouro Direto como a SELIC ao mês supera o da poupança na maioria das vezes, por isso, é a hora de inserir títulos públicos em sua carteira de investimentos.`
 
