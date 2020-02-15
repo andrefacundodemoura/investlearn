@@ -1,4 +1,4 @@
-
+/* 
 body{
     background: rgb(187, 187, 179);
     font:normal 20pt arial;
@@ -26,4 +26,13 @@ footer{
     text-align: center;
     font-style: italic;
     font:normal 20pt arial;
-}    
+}  */
+
+.range{
+  width: 85%;
+  height: 2px;
+  background-color: #111;
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 2px;
+}
