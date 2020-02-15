@@ -14,7 +14,7 @@ slideObjetivo.addEventListener( 'input', ( ) => {
     valueObjetivo = Number(slideObjetivo.value)
 } )
 
-// Implementação do slide para escolher o valor do objetivo
+// Implementação do slide para escolher o valor do investimento mensal
 const slideMes = getElementId( 'mes' )
 const valorPorMes = getElementId( 'valorPorMes' )
 
