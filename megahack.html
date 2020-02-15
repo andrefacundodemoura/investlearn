@@ -24,7 +24,7 @@
                     <!-- <input type="number" name="dinheiro" id="dinheiro">  -->
                     <div >
                         <p id="valorInicialObjetivo" >10000</p>
-                        <input type="range" name="slideObjetivo" id="slideObjetivo" min="1000" max="500000" value="10000" step="100" >
+                        <input type="range"  name="slide" id="slideObjetivo" min="1000" max="500000" value="10000" step="100" >
                     </div>           
                 </div>
                 <div>
@@ -33,16 +33,16 @@
                     </p>
                     <!-- <input type="number" name="mes" id="mes" value="10" >  -->
                     <p id="valorPorMes" >100</p>
-                    <input type="range" name="mes" id="mes" min="10" max="30000" value="100" step="10" >
+                    <input type="range" name="slide" id="mes" min="10" max="30000" value="100" step="10" >
 
                 </div>
                 <p></p>
-                <p><img src="click.jpg" alt="caucula" onclick="calcular()" width="150px"></p>
+                <button type="button" class="btn btn-dark" onclick="calcular()">Investir</button>
             </div>
         </section>
         <section class="jumbotron text-center">
             <div id="res">
-                <p>Veja como seriam seus investimentos:</p>
+                <h2>Veja como seriam seus investimentos:</h2>
                 <p>investimentos resgataveis em qualquer momento!</p>
                 <p id="casa">Guardando em casa:</p>
                 <p id="poup">Poupança:</p>
@@ -52,38 +52,38 @@
         <section class="jumbotron text-center" >
             <p id="text"></p>
         </section>
-        <h2>Aprenda o que é.</h2>
-        <p>
-            <img src="tesourodir.jpeg" alt="tesourodireto">
-        </p>
- 
-    
-        <section>
-            <div>
-    
-                Muitas pessoas, ao observarem o rendimento do Tesouro Direto ao mês, optam por deixar de vez a poupança e migrar para essa modalidade de investimento.
-    
-                Considerado como uma das aplicações mais seguras do mercado, o Tesouro Direto possui três modalidades distintas, que podem se adequar aos planos de, praticamente, qualquer investidor.
-    
-                Seja para guardar dinheiro para a aposentadoria ou simplesmente criar uma reserva de emergência. 
-    
-            </div>
-            
-    
-        </section>
-        <h2>Saiba mais sobre os tipos de aplicações. </h2>
-        <p>
-            <img src="selic.png" alt="tesouroselic" onclick="selic()">
-            <img src="tesouropre.jpg" alt="tesouro prefixado" onclick="tesouropre()">
-            <img src="ipca.jpg" alt="tesouroipca" onclick="ipca()">
         
-        </p>
+        
+        <section class="jumbotron text-center" >
+            <h2>Aprenda o que é.</h2>
+            <p>
+                <img src="tesourodir.jpeg" alt="tesourodireto" width="50%">
+            </p>
+            <div>
+                <p>
+                    Muitas pessoas, ao observarem o rendimento do Tesouro Direto ao mês, optam por deixar de vez a poupança e migrar para essa modalidade de investimento.
+                    Considerado como uma das aplicações mais seguras do mercado, o Tesouro Direto possui três modalidades distintas, que podem se adequar aos planos de, praticamente, qualquer investidor.
+                    Seja para guardar dinheiro para a aposentadoria ou simplesmente criar uma reserva de emergência. 
+                </p>
+            </div>    
+        </section>
+        <section class="jumbotron text-center" >
+            <p></p>
+            <h2>Saiba mais sobre os tipos de aplicações. </h2>
+            <p>
+                <img src="selic.png" alt="tesouroselic" onclick="selic()" >
+                <img src="tesouropre.jpg" alt="tesouro prefixado" onclick="tesouropre()">
+                <img src="ipca.jpg" alt="tesouroipca" onclick="ipca()">
+            
+            </p>
+    
+            <section>
+                <div id="restipo">
+                    <p>Click na imagem acima para obter informações:</p>
+                    
+                </div>
+            </section>
 
-        <section>
-            <div id="restipo">
-                <p>Click na imagem acima para obter informações:</p>
-                
-            </div>
         </section>
     </div>
     
