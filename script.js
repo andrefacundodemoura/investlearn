@@ -14,16 +14,17 @@ slideObjetivo.addEventListener( 'input', ( ) => {
     valueObjetivo = Number(slideObjetivo.value)
 } )
 
-// Implementação do slide para escolher o valor do mensal
-const slidemes = getElementId( 'mes' )
-const textoValormes= getElementId( 'mes' )
+// Implementação do slide para escolher o valor do objetivo
+const slideMes = getElementId( 'mes' )
+const valorPorMes = getElementId( 'valorPorMes' )
 
-let valuemes = 100;
+let valueMes = 100;
 
-slidemes.addEventListener( 'input', ( ) => {
-    textoValormes.innerHTML = slidemes.value
-    valuemes = Number(slidemes.value)
+slideMes.addEventListener( 'input', ( ) => {
+    valorPorMes.innerHTML = slideMes.value
+    valueMes = Number(slideMes.value)
 } )
+
 // Code transforma taxa Selic em Poupança
 async function calcTxPoupanca() {
     const taxaSelic = await SELIC
@@ -128,7 +129,7 @@ async function calcular(){
 
     const objetivo=  valueObjetivo // Number(din.value)
 
-    const mensal=  valuemes//Number(mes.value)
+    const mensal=Number(mes.value)
 
     const guardacasa=objetivo/mensal
     
