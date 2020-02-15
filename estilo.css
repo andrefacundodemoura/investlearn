@@ -6,21 +6,24 @@ body{
 header{
     color: rgb(6, 19, 194);
     text-align: center;
-
+    font:normal 20pt arial;
 }
+
 section{
     background: rgb(0, 0, 0);
     border-radius: 80px;
     padding: 30px;
-    width: 700px;
+    width: 900px;
     margin:auto;
     box-shadow: 5px 5px 10px rgb(255, 0, 0);
     text-align: center;
     color: aliceblue;
+    font:normal 20pt arial;
 
 }
 footer{
     color: rgb(47, 13, 236);
     text-align: center;
     font-style: italic;
+    font:normal 20pt arial;
 }    
