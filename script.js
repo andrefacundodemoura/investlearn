@@ -1,6 +1,6 @@
-console.log( rs() )
-
 const SELIC = rs().then(data => data)
+
+const getElementId = ( element ) => window.document.getElementById( element )
 
 async function calcTxPoupanca() {
     const taxaSelic = await SELIC
@@ -28,29 +28,27 @@ async function calcTxSelic() {
 
 async function dataPoupanca() {
     const resultado = await calcTxPoupanca()
-    console.log( resultado )
     return resultado
 } 
 
 async function dataSelic() {
     const selic = await calcTxSelic()
-    console.log( selic )
     return selic
 } 
 
 
 async function calcular(){
-    let din =window.document.getElementById("dinheiro")
+    let din =getElementId("dinheiro")
 
-    let mes =window.document.getElementById("mes")
+    let mes =getElementId("mes")
 
-    let casa=window.document.getElementById("casa")
+    let casa=getElementId("casa")
 
-    let poup=window.document.getElementById("poup")
+    let poup=getElementId("poup")
 
-    let sel=window.document.getElementById("sel")
+    let sel=getElementId("sel")
 
-    let text=window.document.getElementById("text")
+    let text=getElementId("text")
 
     let objetivo=Number(din.value)
 
@@ -65,8 +63,6 @@ async function calcular(){
         selic: await dataSelic(),
         poupanca: await dataPoupanca()
     }    
-
-    console.log( taxas )
 
     casa.innerHTML=`Guardando em casa: ${contanocasa.toFixed()} anos e ${contrestcasa} meses rendendo R$${objetivo}`
 
