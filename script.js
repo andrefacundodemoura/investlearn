@@ -1,4 +1,45 @@
-function calcular(){
+console.log( rs() )
+
+const SELIC = rs().then(data => data)
+
+async function calcTxPoupanca() {
+    const taxaSelic = await SELIC
+    const jurosAnul = (taxaSelic.valor/100*70).toFixed(3)
+    const jurosMensal = ((Math.pow( 1+(jurosAnul/100), 1/12 ) -1)*100).toFixed(3)
+    return {
+        titulo: 'Poupança',
+        data: taxaSelic.data,
+        jurosAnul,
+        jurosMensal
+    }
+} 
+
+async function calcTxSelic() {
+    const taxaSelic = await SELIC
+    const jurosAnul = taxaSelic.valor
+    const jurosMensal = ((Math.pow( 1+(jurosAnul/100), 1/12 ) -1)*100).toFixed(3)
+    return {
+        titulo: 'Selic',
+        data: taxaSelic.data,
+        jurosAnul,
+        jurosMensal
+    }
+} 
+
+async function dataPoupanca() {
+    const resultado = await calcTxPoupanca()
+    console.log( resultado )
+    return resultado
+} 
+
+async function dataSelic() {
+    const selic = await calcTxSelic()
+    console.log( selic )
+    return selic
+} 
+
+
+async function calcular(){
     let din =window.document.getElementById("dinheiro")
 
     let mes =window.document.getElementById("mes")
@@ -20,6 +61,12 @@ function calcular(){
     let contanocasa=guardacasa/12
     let contrestcasa=guardacasa%12
 
+    const taxas = {
+        selic: await dataSelic(),
+        poupanca: await dataPoupanca()
+    }    
+
+    console.log( taxas )
 
     casa.innerHTML=`Guardando em casa: ${contanocasa.toFixed()} anos e ${contrestcasa} meses rendendo R$${objetivo}`
 
@@ -28,7 +75,7 @@ function calcular(){
     let contp=1
     
     for (var p=mensal;p<objetivo;p+=mensal){
-        let pouptaxa=p/100*0.24
+        let pouptaxa=p/100*taxas.poupanca.jurosMensal
         contp ++
         p+=pouptaxa
     }
@@ -42,7 +89,7 @@ function calcular(){
    
     let conts=1
     for (var s=mensal;s<objetivo;s+=mensal){
-        let selictaxa=s/100*0.45
+        let selictaxa=s/100*taxas.selic.jurosMensal
         conts++
         s+=selictaxa
     }
