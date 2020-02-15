@@ -15,7 +15,7 @@ slideObjetivo.addEventListener( 'input', ( ) => {
 } )
 
 // Implementação do slide para escolher o valor do mensal
-const slidemes = getElementId( 'slidemes' )
+const slidemes = getElementId( 'mes' )
 const textoValormes= getElementId( 'mes' )
 
 let valuemes = 100;
