@@ -1,7 +1,9 @@
 const SELIC = rs().then(data => data)
 
+// Função para simplificar o getElementById
 const getElementId = ( element ) => window.document.getElementById( element )
 
+// Code transforma taxa Selic em Poupança
 async function calcTxPoupanca() {
     const taxaSelic = await SELIC
     const jurosAnul = (taxaSelic.valor/100*70).toFixed(3)
@@ -14,6 +16,7 @@ async function calcTxPoupanca() {
     }
 } 
 
+// Taxa Selic
 async function calcTxSelic() {
     const taxaSelic = await SELIC
     const jurosAnul = taxaSelic.valor
@@ -26,16 +29,30 @@ async function calcTxSelic() {
     }
 } 
 
+// Função para pegar Objeto com dados da Poupança
 async function dataPoupanca() {
     const resultado = await calcTxPoupanca()
     return resultado
 } 
 
+// Função para pegar Objeto com dados da Selic
 async function dataSelic() {
     const selic = await calcTxSelic()
     return selic
-} 
+}
 
+// Função para fazer o calculo dos investimentos
+/**
+ * Aqui eu peguei a sua logica de calculo do rendimento e transformei em uma
+ * função, para poder usar em varios locais do code sem ter que ficar fazendo
+ * sempre o mesmo code. 
+ * 
+ * Ela recebe o Valor mensal, valor do objetivo e a taxa ( como o calculo é igual
+ * e só muda a taxa fica mais facil de fazer correções )
+ * 
+ * Como já estava em função eu só alterei aqui o problema de arredondamento e tanto as
+ * Poupança quanto a Selic já ficaram certas.
+ */
 const calculoInvestimento = ( valorMensal, valorObjetivo, taxa ) => {
     let contp=1
     let anos;
@@ -47,16 +64,11 @@ const calculoInvestimento = ( valorMensal, valorObjetivo, taxa ) => {
         p+=pouptaxa
     }
 
-    anos = contp/12
+    anos = parseInt(contp/12)
     meses = (contp%12).toFixed()
 
-    if( anos < 1 ){
-        anos = 0
-    }else{
-        anos = anos.toFixed()
-    }
-
-    return [ anos , meses, p.toFixed(2) ]
+    return [ anos , meses, p.toFixed(2) ]  // O retorno da função é um array, em vez de colocar as variaveis direto no resultado
+                                           // pegamos desse array, assim evita de ter o risco de fazer modificações em variaveis que não eram para ser modificadas
 }
 
 async function calcular(){
@@ -79,7 +91,7 @@ async function calcular(){
 
     let guardacasa=objetivo/mensal
     
-    let contanocasa=(guardacasa/12)
+    let contanocasa=parseInt(guardacasa/12)
     let contrestcasa=guardacasa%12
 
     if( contanocasa < 1 ){
@@ -90,6 +102,8 @@ async function calcular(){
 
     console.log( guardacasa , contanocasa)
 
+    // Aqui estou chamando as funções para pegar as taxas
+    // Criei um objeto para ficar mais declarativa e poder adcionar mais opções se for preciso
     const taxas = {
         selic: await dataSelic(),
         poupanca: await dataPoupanca()
@@ -97,7 +111,11 @@ async function calcular(){
 
     casa.innerHTML=`Guardando em casa: ${contanocasa} anos e ${contrestcasa} meses rendendo R$${objetivo}`
 
+    // Aqui estou fazendo uma desestruturação - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Atribuicao_via_desestruturacao
+    // Assim vc pode criar varias variaveis baseadas em um array
+    // A função calculoInvestimento retorna um array com os 3 valores.
     const [ resPoupancaAno, resPoupancaMes, valorTotalPoupanca ] = calculoInvestimento( mensal, objetivo, taxas.poupanca.jurosMensal )
+    
     const [ resSelicAno, resSelicMes, valorTotalSelic ] = calculoInvestimento( mensal, objetivo, taxas.selic.jurosMensal )
 
     poup.innerHTML=`Poupança: ${resPoupancaAno} anos e ${resPoupancaMes} meses e atingira R$${valorTotalPoupanca}`
