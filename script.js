@@ -47,14 +47,8 @@ const calculoInvestimento = ( valorMensal, valorObjetivo, taxa ) => {
         p+=pouptaxa
     }
 
-    anos = contp/12
+    anos = parseInt(contp/12)
     meses = (contp%12).toFixed()
-
-    if( anos < 1 ){
-        anos = 0
-    }else{
-        anos = anos.toFixed()
-    }
 
     return [ anos , meses, p.toFixed(2) ]
 }
@@ -79,7 +73,7 @@ async function calcular(){
 
     let guardacasa=objetivo/mensal
     
-    let contanocasa=(guardacasa/12)
+    let contanocasa=parseInt(guardacasa/12)
     let contrestcasa=guardacasa%12
 
     if( contanocasa < 1 ){
