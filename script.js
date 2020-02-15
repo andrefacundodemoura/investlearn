@@ -71,34 +71,48 @@ const calculoInvestimento = ( valorMensal, valorObjetivo, taxa ) => {
                                            // pegamos desse array, assim evita de ter o risco de fazer modificações em variaveis que não eram para ser modificadas
 }
 
+// Função para tornar mais dinamica a resposta, tirando textos que não fariao sentido
+// ex: 0 Anos
+const textoResultadoDaSimulacao = ( opcao, anos, meses, valorTotal ) =>{
+    let texto = `${ opcao }: `
+    const textoAnos = `${ anos } anos`
+    const textoMeses= `${ meses } meses`
+
+    if( anos > 0 && meses > 0 ){
+        texto += `${ textoAnos } e ${ textoMeses }`
+    }else if( anos > 0 ){
+        texto += textoAnos
+    }else if( meses > 0 ){
+        texto += textoMeses
+    }
+
+    texto += ` rendendo R$ ${ valorTotal }.`
+
+    return texto
+}
+
 async function calcular(){
 
-    let din =getElementId("dinheiro")
+    const din =getElementId("dinheiro")
 
-    let mes =getElementId("mes")
+    const mes =getElementId("mes")
 
-    let casa=getElementId("casa")
+    const casa=getElementId("casa")
 
-    let poup=getElementId("poup")
+    const poup=getElementId("poup")
 
-    let sel=getElementId("sel")
+    const sel=getElementId("sel")
 
-    let text=getElementId("text")
+    const text=getElementId("text")
 
-    let objetivo=Number(din.value)
+    const objetivo=Number(din.value)
 
-    let mensal=Number(mes.value)
+    const mensal=Number(mes.value)
 
-    let guardacasa=objetivo/mensal
+    const guardacasa=objetivo/mensal
     
-    let contanocasa=parseInt(guardacasa/12)
-    let contrestcasa=guardacasa%12
-
-    if( contanocasa < 1 ){
-        contanocasa = 0
-    }else{
-        contanocasa = contanocasa.toFixed()
-    }
+    const contanocasa=parseInt(guardacasa/12)
+    const contrestcasa=(guardacasa%12).toFixed()
 
     console.log( guardacasa , contanocasa)
 
@@ -109,7 +123,7 @@ async function calcular(){
         poupanca: await dataPoupanca()
     }    
 
-    casa.innerHTML=`Guardando em casa: ${contanocasa} anos e ${contrestcasa} meses rendendo R$${objetivo}`
+    casa.innerHTML= textoResultadoDaSimulacao( 'Guardando em casa', contanocasa, contrestcasa, objetivo )
 
     // Aqui estou fazendo uma desestruturação - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Atribuicao_via_desestruturacao
     // Assim vc pode criar varias variaveis baseadas em um array
@@ -118,19 +132,19 @@ async function calcular(){
     
     const [ resSelicAno, resSelicMes, valorTotalSelic ] = calculoInvestimento( mensal, objetivo, taxas.selic.jurosMensal )
 
-    poup.innerHTML=`Poupança: ${resPoupancaAno} anos e ${resPoupancaMes} meses e atingira R$${valorTotalPoupanca}`
+    poup.innerHTML = textoResultadoDaSimulacao( 'Poupança', resPoupancaAno, resPoupancaMes, valorTotalPoupanca )
+    sel.innerHTML = textoResultadoDaSimulacao( 'Tesouro SELIC', resSelicAno, resSelicMes, valorTotalSelic )
 
-    sel.innerHTML=`Tesouro SELIC: ${resSelicAno} anos e ${resSelicMes} meses e atingira R$${valorTotalSelic}`
     text.innerHTML=` O rendimento do Tesouro Direto como a SELIC ao mês supera o da poupança na maioria das vezes, por isso, é a hora de inserir títulos públicos em sua carteira de investimentos.`
 
 }
 function selic(){
-    let sel=window.document.getElementById("restipo")
+    const sel = getElementId("restipo")
     sel.innerHTML=`O Tesouro Direto Selic é um título de dívida emitido pelo governo. Isso significa que ao investir nele, você estará emprestando dinheiro ao poder público.Essa é a principal função do Tesouro Direto para o emissor. Para o investidor que busca aplicar com a flexibilidade de poder resgatar o dinheiro quando quiser, sem perda de lucro, o Tesouro Direto tende a ser uma boa opção.`
     
 }
 function tesouropre(){
-    let tpfx=window.document.getElementById("restipo")
+    const tpfx = getElementId("restipo")
     tpfx.innerHTML=`Anteriormente chamado de LTN (Letra do Tesouro Nacional), o Tesouro Prefixado é um título prefixado (como o próprio nome já deixa claro), o que significa que possui rentabilidade definida no momento da compra.
 
     Esse título possui fluxo de pagamento simples, ou seja, o investidor faz a aplicação e recebe o valor de face (valor investido somado à rentabilidade), na data de vencimento do título.
@@ -141,7 +155,7 @@ function tesouropre(){
 
 }
 function ipca(){
-    let ipca=window.document.getElementById("restipo")
+    const ipca = getElementId("restipo")
     ipca.innerHTML=`O Tesouro IPCA é um título público emitido pelo Governo.
 
     Seu objetivo é captar dinheiro de investidores para o Governo investir em áreas como infraestrutura, saúde e segurança.
