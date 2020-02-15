@@ -3,6 +3,17 @@ const SELIC = rs().then(data => data)
 // Função para simplificar o getElementById
 const getElementId = ( element ) => window.document.getElementById( element )
 
+// Implementação do slide para escolher o valor do objetivo
+const slideObjetivo = getElementId( 'slideObjetivo' )
+const textoValorObjetivo = getElementId( 'valorInicialObjetivo' )
+
+let valueObjetivo = 1000;
+
+slideObjetivo.addEventListener( 'input', ( ) => {
+    textoValorObjetivo.innerHTML = slideObjetivo.value
+    valueObjetivo = Number(slideObjetivo.value)
+} )
+
 // Code transforma taxa Selic em Poupança
 async function calcTxPoupanca() {
     const taxaSelic = await SELIC
@@ -105,7 +116,7 @@ async function calcular(){
 
     const text=getElementId("text")
 
-    const objetivo=Number(din.value)
+    const objetivo=  valueObjetivo // Number(din.value)
 
     const mensal=Number(mes.value)
 
@@ -114,7 +125,7 @@ async function calcular(){
     const contanocasa=parseInt(guardacasa/12)
     const contrestcasa=(guardacasa%12).toFixed()
 
-    console.log( guardacasa , contanocasa)
+    console.log( typeof valueObjetivo, valueObjetivo )
 
     // Aqui estou chamando as funções para pegar as taxas
     // Criei um objeto para ficar mais declarativa e poder adcionar mais opções se for preciso
