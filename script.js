@@ -14,7 +14,7 @@ slideObjetivo.addEventListener( 'input', ( ) => {
     valueObjetivo = Number(slideObjetivo.value)
 } )
 
-// Implementação do slide para escolher o valor do objetivo
+// Implementação do slide para escolher o valor do investimento mensal
 const slideMes = getElementId( 'mes' )
 const valorPorMes = getElementId( 'valorPorMes' )
 
@@ -23,6 +23,37 @@ let valueMes = 100;
 slideMes.addEventListener( 'input', ( ) => {
     valorPorMes.innerHTML = 'R$ ' + slideMes.value
     valueMes = Number(slideMes.value)
+} )
+
+// Implementação dos botões de objetivo
+
+const botoesObjetivoImovel = getElementId('bt-objetivo-imovel')
+const botoesObjetivoReserva = getElementId('bt-objetivo-reserva')
+const botoesObjetivoViagem = getElementId('bt-objetivo-viagem')
+const botoesObjetivoVeiculo = getElementId('bt-objetivo-veiculo')
+
+botoesObjetivoImovel.addEventListener( 'click', ( ) => {
+    slideObjetivo.value = 140000
+    textoValorObjetivo.innerHTML = 140000
+    valueObjetivo = 140000
+} )
+
+botoesObjetivoReserva.addEventListener( 'click', ( ) => {
+    slideObjetivo.value = 30000
+    textoValorObjetivo.innerHTML = 30000
+    valueObjetivo = 30000
+} )
+
+botoesObjetivoViagem.addEventListener( 'click', ( ) => {
+    slideObjetivo.value = 10000
+    textoValorObjetivo.innerHTML = 10000
+    valueObjetivo = 10000
+} )
+
+botoesObjetivoVeiculo.addEventListener( 'click', ( ) => {
+    slideObjetivo.value = 30000
+    textoValorObjetivo.innerHTML = 30000
+    valueObjetivo = 30000
 } )
 
 // Code transforma taxa Selic em Poupança
