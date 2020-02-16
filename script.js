@@ -34,25 +34,25 @@ const botoesObjetivoVeiculo = getElementId('bt-objetivo-veiculo')
 
 botoesObjetivoImovel.addEventListener( 'click', ( ) => {
     slideObjetivo.value = 140000
-    textoValorObjetivo.innerHTML = 140000
+    textoValorObjetivo.innerHTML = "R$ 140000"
     valueObjetivo = 140000
 } )
 
 botoesObjetivoReserva.addEventListener( 'click', ( ) => {
     slideObjetivo.value = 30000
-    textoValorObjetivo.innerHTML = 30000
+    textoValorObjetivo.innerHTML = "R$ 30000"
     valueObjetivo = 30000
 } )
 
 botoesObjetivoViagem.addEventListener( 'click', ( ) => {
     slideObjetivo.value = 10000
-    textoValorObjetivo.innerHTML = 10000
+    textoValorObjetivo.innerHTML = "R$ 10000"
     valueObjetivo = 10000
 } )
 
 botoesObjetivoVeiculo.addEventListener( 'click', ( ) => {
     slideObjetivo.value = 30000
-    textoValorObjetivo.innerHTML = 30000
+    textoValorObjetivo.innerHTML = "R$ 42000"
     valueObjetivo = 30000
 } )
 

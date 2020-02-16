@@ -37,6 +37,20 @@ footer{
   border-radius: 2px;
 }
 
+.inv{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.inv.p{
+    margin-top: 20px;
+}
+
+.inv-por-mes{
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 50px;
+}
+
 .bt-objetivo{
     -webkit-appearance: none;
     border: none;
@@ -53,6 +67,7 @@ footer{
     text-align: center;
     justify-content: center;
 }
+
 
 .bt-objetivo:hover{
     background-color: grey;
